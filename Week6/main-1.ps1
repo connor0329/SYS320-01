@@ -13,7 +13,7 @@ $Prompt += "5 - Enable a User`n"
 $Prompt += "6 - Disable a User`n"
 $Prompt += "7 - Get Log-In Logs`n"
 $Prompt += "8 - Get Failed Log-In Logs`n"
-$Prompt += "9 - List at Risk Users"
+$Prompt += "9 - List at Risk Users`n"
 $Prompt += "10 - Exit`n"
 
 
@@ -174,7 +174,7 @@ while($operation){
 
         $numberDays = Read-Host -Prompt "Number of Days for User Logs"
 
-        $userLogins = getLogInAndOffs $numberDays
+        $userLogins = getFailedLogins $numberDays
         # TODO: Change the above line in a way that, the days 90 should be taken from the user
 
         Write-Host ($userLogins | Where-Object { $_.User -ilike "*$name"} | Format-Table | Out-String)
