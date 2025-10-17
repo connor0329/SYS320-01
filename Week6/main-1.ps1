@@ -187,7 +187,7 @@ while($operation){
        
        $failedLogins = getFailedLogins $numberDays1 | Group-Object -Property User | Where-Object { $_.Count -gt 10 }
   
-       $failedLogins | Select-Object Name -Unique
+       Write-Host ($failedLogins | Select-Object Name, Count | Format-Table | Out-String)
    }
 
 
