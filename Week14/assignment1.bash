@@ -50,7 +50,11 @@ read subject
 
 echo ""
 echo "Available courses in $subject :"
-
+cat "$courseFile" | grep "$subject" | \
+awk -F';' '$4 > 0' | cut -d';' -f1,2,5,6,7,8,9,10 | \
+sed 's/;/ | /g'
+echo ""
+}
 # TODO - 1
 # Make a function that displays all the courses in given location
 # function dislaplays course code, course name, course days, time, instructor
@@ -72,6 +76,7 @@ do
 	echo "[1] Display courses of an instructor"
 	echo "[2] Display course count of instructors"
 	echo "[3] Display courses of a classroom"
+	echo "[4] Display available course of subject"
 	echo "[5] Exit"
 
 	read userInput
@@ -89,7 +94,10 @@ do
 
 	elif [[ "$userInput" == "3" ]]; then 
 		courseLocation
-
+	
+	elif [[ "$userInput" == "4" ]]; then 
+		courseAvailability
+ 
 	# TODO - 3 Display a message, if an invalid input is given
 	fi
 done
