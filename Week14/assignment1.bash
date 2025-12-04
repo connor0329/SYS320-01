@@ -97,7 +97,9 @@ do
 	
 	elif [[ "$userInput" == "4" ]]; then 
 		courseAvailability
- 
+	else 
+		echo "Invalid input code"
+		echo "" 
 	# TODO - 3 Display a message, if an invalid input is given
 	fi
 done
